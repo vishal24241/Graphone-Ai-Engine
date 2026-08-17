@@ -1,0 +1,17 @@
+aiohttp
+beautifulsoup4
+lxml
+playwright
+pydantic
+pydantic-settings
+python-dotenv
+sqlalchemy
+psycopg2-binary
+tenacity
+google-generativeai
+groq
+httpx
+rapidfuzz
+gspread
+google-auth
+pandas
