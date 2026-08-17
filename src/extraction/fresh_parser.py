@@ -1,5 +1,4 @@
-
-import sqlite3
+﻿import sqlite3
 import re
 from datetime import datetime, timezone, timedelta
 from email.utils import parsedate_to_datetime
@@ -16,10 +15,8 @@ def parse_date(value):
 
     try:
         dt = parsedate_to_datetime(value)
-
         if dt.tzinfo is None:
             dt = dt.replace(tzinfo=timezone.utc)
-
         return dt.astimezone(timezone.utc)
     except Exception:
         pass
@@ -27,25 +24,36 @@ def parse_date(value):
     try:
         value = value.replace("Z", "+00:00")
         dt = datetime.fromisoformat(value)
-
         if dt.tzinfo is None:
             dt = dt.replace(tzinfo=timezone.utc)
-
         return dt.astimezone(timezone.utc)
     except Exception:
-        return None
+        pass
+
+    return None
 
 
 def extract_dates(html):
+    if not html:
+        return []
+
+    html = unescape(html)
+    dates = []
+
     patterns = [
-        r'<meta[^>]+property=["\']article:published_time["\'][^>]+content=["\']([^"\']+)',
+        r'<meta[^>]+(?:property|name)=["\']article:published_time["\'][^>]+content=["\']([^"\']+)',
+        r'<meta[^>]+(?:property|name)=["\']article:modified_time["\'][^>]+content=["\']([^"\']+)',
         r'<meta[^>]+name=["\']date["\'][^>]+content=["\']([^"\']+)',
         r'<meta[^>]+name=["\']publishdate["\'][^>]+content=["\']([^"\']+)',
         r'<meta[^>]+itemprop=["\']datePublished["\'][^>]+content=["\']([^"\']+)',
-        r'<time[^>]+datetime=["\']([^"\']+)'
+        r'<meta[^>]+itemprop=["\']dateModified["\'][^>]+content=["\']([^"\']+)',
+        r'<time[^>]+datetime=["\']([^"\']+)',
+        r'"datePublished"\s*:\s*"([^"]+)"',
+        r'"dateModified"\s*:\s*"([^"]+)"',
+        r'"published_at"\s*:\s*"([^"]+)"',
+        r'"created_at"\s*:\s*"([^"]+)"',
+        r'"publication_date"\s*:\s*"([^"]+)"'
     ]
-
-    dates = []
 
     for pattern in patterns:
         for value in re.findall(
@@ -54,7 +62,6 @@ def extract_dates(html):
             flags=re.IGNORECASE
         ):
             dt = parse_date(value)
-
             if dt:
                 dates.append(dt)
 
@@ -66,14 +73,12 @@ def is_fresh(dt):
         return False
 
     now = datetime.now(timezone.utc)
-
     age = now - dt
 
     return timedelta(0) <= age <= timedelta(hours=24)
 
 
 def process_table(conn, table):
-
     cur = conn.cursor()
 
     cur.execute(
@@ -88,31 +93,29 @@ def process_table(conn, table):
     fresh = 0
     dated = 0
 
-    for row_id, source, url, content in rows:
-
+    for row_id, source_name, source_url, content in rows:
         dates = extract_dates(content or "")
 
         if not dates:
             continue
 
         dated += 1
-
         newest = max(dates)
+
+        cur.execute(
+            f"""
+            UPDATE {table}
+            SET published_date = ?
+            WHERE id = ?
+            """,
+            (
+                newest.isoformat(),
+                row_id
+            )
+        )
 
         if is_fresh(newest):
             fresh += 1
-
-            cur.execute(
-                f"""
-                UPDATE {table}
-                SET published_date = ?
-                WHERE id = ?
-                """,
-                (
-                    newest.isoformat(),
-                    row_id
-                )
-            )
 
     conn.commit()
 
@@ -120,7 +123,6 @@ def process_table(conn, table):
 
 
 def main():
-
     print("=" * 70)
     print("24-HOUR FRESHNESS PARSER")
     print("=" * 70)
