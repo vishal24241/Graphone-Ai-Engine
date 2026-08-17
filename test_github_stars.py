@@ -1,4 +1,6 @@
 import asyncio
+import aiohttp
+
 from src.enrichment.github_metrics import fetch_github_stars
 
 
@@ -10,13 +12,15 @@ async def main():
         "https://github.com/AlayaLab/AlayaWorld"
     ]
 
-    for url in urls:
+    async with aiohttp.ClientSession() as session:
 
-        stars = await fetch_github_stars(url)
+        for url in urls:
 
-        print(
-            f"{url} -> {stars} stars"
-        )
+            stars = await fetch_github_stars(url, session)
+
+            print(
+                f"{url} -> {stars} stars"
+            )
 
 
 asyncio.run(main())
