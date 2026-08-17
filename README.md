@@ -1,8 +1,8 @@
 ﻿# GraphOne AI Intelligence Engine
 
-AI intelligence data pipeline for ingesting, enriching, normalizing and exposing structured data from research papers, startups, products, AI jobs and news signals.
+GraphOne is an AI/venture intelligence ingestion pipeline that collects, normalizes, enriches and exposes structured information about AI startups, products, research papers, jobs and news signals.
 
-## Current Dataset
+## Verified Dataset
 
 | Dataset | Records |
 |---|---:|
@@ -10,12 +10,13 @@ AI intelligence data pipeline for ingesting, enriching, normalizing and exposing
 | Startups | 1,000 |
 | Products | 1,000 |
 | News Signals | 5 |
-| AI Jobs | 3 |
+| AI Jobs | 5 |
+| Entity Mapping Log | 2,000 |
 | HuggingFace Matches | 996 |
 | GitHub Repositories | 23 |
 | GitHub Stars | 1,385 |
 
-## Features
+## Key Features
 
 - arXiv research paper ingestion
 - HuggingFace enrichment
@@ -25,8 +26,48 @@ AI intelligence data pipeline for ingesting, enriching, normalizing and exposing
 - Product dataset ingestion
 - AI news signal ingestion
 - AI job signal ingestion
-- SQLite data storage
+- Deterministic entity resolution
+- Entity mapping audit log
+- SQLite persistence
+- Async HTTP ingestion
 - FastAPI REST API
+- LLM-based extraction orchestration
+- Gemini Flash -> Groq Llama -> DeepSeek fallback
+- 413 payload handling
+- 429 exponential backoff with jitter
+- Intelligent text chunking
+- Anti-bot/source fallback strategy
+
+## Architecture
+
+Data Sources
+    |
+    v
+Async Ingestion
+    |
+    v
+Normalization
+    |
+    v
+Entity Resolution
+    |
+    +-------------------+
+    |                   |
+    v                   v
+Enrichment        LLM Extraction
+    |                   |
+    |          Gemini -> Groq -> DeepSeek
+    |
+    +--------+----------+
+             |
+             v
+           SQLite
+             |
+             v
+         FastAPI API
+             |
+             v
+        Submission XLSX
 
 ## API
 
@@ -44,34 +85,15 @@ Returns counts for papers, startups, products, news and jobs.
 
 GET /stats
 
-Returns enrichment statistics including total papers, HuggingFace matches, GitHub matches and GitHub stars.
+Returns enrichment statistics including total papers, HuggingFace matches, GitHub repositories and GitHub stars.
 
 ### Paper Details
 
 GET /papers/{paper_id}
 
-Returns details for an individual research paper.
-
 Example:
 
 GET /papers/847
-
-## Project Structure
-
-graphone-ai-engine/
-├── data/
-│   ├── research_papers.db
-│   ├── startups.db
-│   ├── products.db
-│   └── signals.db
-├── src/
-│   ├── api/
-│   ├── enrichment/
-│   └── ...
-├── tests/
-├── requirements.txt
-├── README.md
-└── .gitignore
 
 ## Installation
 
@@ -91,9 +113,10 @@ pip install -r requirements.txt
 
 uvicorn src.api.main:app --reload
 
-## Verify
+## Verify API
 
 Invoke-RestMethod "http://127.0.0.1:8000/datasets"
+
 Invoke-RestMethod "http://127.0.0.1:8000/stats"
 
 ## Technology Stack
@@ -107,18 +130,46 @@ Invoke-RestMethod "http://127.0.0.1:8000/stats"
 - arXiv
 - HuggingFace
 - GitHub API
+- Gemini
+- Groq
+- DeepSeek
+
+## Project Structure
+
+graphone-ai-engine/
+|
++-- data/
+|   +-- research_papers.db
+|   +-- startups.db
+|   +-- products.db
+|   +-- signals.db
+|   +-- entity_mapping_log.csv
+|   +-- GraphOne_submission.xlsx
+|
++-- src/
+|   +-- api/
+|   +-- enrichment/
+|   +-- entity_resolution/
+|   +-- llm/
+|
++-- tests/
+|
++-- requirements.txt
++-- README.md
++-- .gitignore
 
 ## Project Status
 
-Core ingestion, enrichment, database storage and API layers are implemented.
+Core ingestion, normalization, enrichment, entity resolution, database storage, LLM orchestration and API layers are implemented and verified.
 
-Verified dataset:
+Final verified dataset:
 
 - 1,000 research papers
 - 1,000 startups
 - 1,000 products
 - 5 news signals
-- 3 AI jobs
+- 5 AI jobs
+- 2,000 entity mapping records
 - 996 HuggingFace matches
 - 23 GitHub repositories
 - 1,385 GitHub stars

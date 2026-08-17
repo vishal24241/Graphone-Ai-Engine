@@ -52,7 +52,12 @@ def extract_dates(html):
         r'"dateModified"\s*:\s*"([^"]+)"',
         r'"published_at"\s*:\s*"([^"]+)"',
         r'"created_at"\s*:\s*"([^"]+)"',
-        r'"publication_date"\s*:\s*"([^"]+)"'
+        r'"publication_date"\s*:\s*"([^"]+)"',
+        r'<pubDate>\s*([^<]+)\s*</pubDate>',
+        r'<published>\s*([^<]+)\s*</published>',
+        r'<updated>\s*([^<]+)\s*</updated>',
+        r'<dc:date>\s*([^<]+)\s*</dc:date>',
+        r'<lastBuildDate>\s*([^<]+)\s*</lastBuildDate>'
     ]
 
     for pattern in patterns:

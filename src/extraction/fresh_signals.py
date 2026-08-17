@@ -1,4 +1,4 @@
-
+﻿
 import asyncio
 import aiohttp
 import sqlite3
@@ -18,10 +18,10 @@ NEWS_SOURCES = {
 
 JOB_SOURCES = {
     "RemoteOK AI": "https://remoteok.com/remote-ai-jobs",
-    "We Work Remotely": "https://weworkremotely.com/remote-jobs/search?term=ai",
+    "Himalayas AI": "https://himalayas.app/jobs/rss",
     "Wellfound AI": "https://wellfound.com/jobs",
     "AI Jobs": "https://ai-jobs.net/",
-    "Indeed AI": "https://www.indeed.com/jobs?q=artificial+intelligence"
+    "Jobicy AI": "https://jobicy.com/?feed=job_feed"
 }
 
 
