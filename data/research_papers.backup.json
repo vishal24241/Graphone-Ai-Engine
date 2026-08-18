@@ -1,0 +1,184 @@
+[
+  {
+    "title": "AutoDesign: Meta-Harness Optimization for Long-Horizon Agentic Design",
+    "authors": [
+      "Yaxin Luo",
+      "Haobin Jiang",
+      "Jialv Zou",
+      "Xu Huang",
+      "Wenhao Yan",
+      "Haodong Li",
+      "Zhengrong Yue",
+      "Jing Li",
+      "Xiaofu Chen",
+      "Xiaohan Zhao",
+      "Jiacheng Liu",
+      "Jiacheng Cui",
+      "Zhiqiang Shen",
+      "Xiaotong Li"
+    ],
+    "arxiv_id": "2608.13560v1",
+    "paper_url": "http://arxiv.org/abs/2608.13560v1",
+    "published_date": "2026-08-13T17:59:57Z",
+    "huggingface_url": "https://huggingface.co/papers/2608.13560",
+    "github_url": "https://github.com/Yaxin9Luo/AutoDesign"
+  },
+  {
+    "title": "OmniScientist: An Omni-Modal Omni-Discipline AI Scientist",
+    "authors": [
+      "Bobo Li",
+      "Hao Fei",
+      "Tianjie Ju",
+      "Mong-Li Lee",
+      "Wynne Hsu"
+    ],
+    "arxiv_id": "2608.13558v1",
+    "paper_url": "http://arxiv.org/abs/2608.13558v1",
+    "published_date": "2026-08-13T17:59:52Z",
+    "huggingface_url": "https://huggingface.co/papers/2608.13558",
+    "github_url": null
+  },
+  {
+    "title": "HumanTracker: Towards Comprehensive and Human-Aligned Motion Tracking Benchmark",
+    "authors": [
+      "Dairu Liu",
+      "Zekun Qi",
+      "Jiayu Zeng",
+      "Ruixi Yu",
+      "Yu Guan",
+      "Yintianrun Zhang",
+      "Xuchuan Chen",
+      "Sikai Liang",
+      "Zekai Li",
+      "Chenghuai Lin",
+      "Xinqiang Yu",
+      "Wenyao Zhang",
+      "He Wang",
+      "Li Yi"
+    ],
+    "arxiv_id": "2608.13555v1",
+    "paper_url": "http://arxiv.org/abs/2608.13555v1",
+    "published_date": "2026-08-13T17:59:40Z",
+    "huggingface_url": "https://huggingface.co/papers/2608.13555",
+    "github_url": null
+  },
+  {
+    "title": "QuoteBench: How Matched Scores Can Hide Command-Path Failures",
+    "authors": [
+      "Shangao Li",
+      "Yao Zhang",
+      "Volker Tresp",
+      "Yuanyuan Yang"
+    ],
+    "arxiv_id": "2608.13547v1",
+    "paper_url": "http://arxiv.org/abs/2608.13547v1",
+    "published_date": "2026-08-13T17:57:20Z",
+    "huggingface_url": "https://huggingface.co/papers/2608.13547",
+    "github_url": null
+  },
+  {
+    "title": "LittleLearner: Language Models Under Pedagogically Controlled Knowledge Exposure",
+    "authors": [
+      "Fanfei Li",
+      "Jana Zeller",
+      "Manuel Prada-Corral",
+      "Thaddäus Wiedemer",
+      "Prasanna Mayilvahanan",
+      "Ryan Cotterell",
+      "Wieland Brendel"
+    ],
+    "arxiv_id": "2608.13545v1",
+    "paper_url": "http://arxiv.org/abs/2608.13545v1",
+    "published_date": "2026-08-13T17:56:12Z",
+    "huggingface_url": "https://huggingface.co/papers/2608.13545",
+    "github_url": null
+  },
+  {
+    "title": "Vero: Can AI Agents Build Formally Verified Software Repositories?",
+    "authors": [
+      "Zhe Ye",
+      "Hantao Lou",
+      "Yuechun Sun",
+      "Peiyang Song",
+      "Zhengxu Yan",
+      "Timothe Kasriel",
+      "Qingyang Zhang",
+      "Kaiyu Yang",
+      "Soonho Kong",
+      "Jingxuan He",
+      "Dawn Song"
+    ],
+    "arxiv_id": "2608.13522v1",
+    "paper_url": "http://arxiv.org/abs/2608.13522v1",
+    "published_date": "2026-08-13T17:41:27Z",
+    "huggingface_url": null,
+    "github_url": "https://github.com/sunblaze-ucb/vero"
+  },
+  {
+    "title": "The data geometry of masking diffusion: Certified-optimal schedules via unmasking growth complexity",
+    "authors": [
+      "Martin J. Wainwright"
+    ],
+    "arxiv_id": "2608.13520v1",
+    "paper_url": "http://arxiv.org/abs/2608.13520v1",
+    "published_date": "2026-08-13T17:40:17Z",
+    "huggingface_url": null,
+    "github_url": "https://github.com/Emersonmafra/f"
+  },
+  {
+    "title": "DFM Mimir v1: An Open HRM Delivering Frontier Performance at 1B Parameters Using Only Permissible Post-Training Data",
+    "authors": [
+      "Peter Schneider-Kamp",
+      "Jacob Nielsen",
+      "Gianluca Barmina",
+      "Kenneth Enevoldsen",
+      "Lukas Galke Poech"
+    ],
+    "arxiv_id": "2608.13517v1",
+    "paper_url": "http://arxiv.org/abs/2608.13517v1",
+    "published_date": "2026-08-13T17:37:53Z",
+    "huggingface_url": "https://huggingface.co/papers/2608.13517",
+    "github_url": null
+  },
+  {
+    "title": "AlayaWorld: Interactive Long-Horizon World Modeling - Full Technical Report (v1.1)",
+    "authors": [
+      "AlayaWorld Team",
+      "Kaipeng Zhang",
+      "Chuanhao Li",
+      "Yifan Zhan",
+      "Yongtao Ge",
+      "Yuanyang Yin",
+      "Jiaming Tan",
+      "Kang He",
+      "Liaoyuan Fan",
+      "Mingliang Zhai",
+      "Ruicong Liu",
+      "Xiaojie Xu",
+      "Xuangeng Chu",
+      "Zhen Li",
+      "Zhengyuan Lin",
+      "Zhixiang Wang",
+      "Zian Meng",
+      "Zihui Gao"
+    ],
+    "arxiv_id": "2608.13492v1",
+    "paper_url": "http://arxiv.org/abs/2608.13492v1",
+    "published_date": "2026-08-13T17:21:03Z",
+    "huggingface_url": null,
+    "github_url": "https://github.com/AlayaLab/AlayaWorld"
+  },
+  {
+    "title": "Toward a Gricean Retreat: Probing LLMs for Knowledge Boundaries and Referent Specificity",
+    "authors": [
+      "Dananjay Srinivas",
+      "Saksham Khatwani",
+      "Maria Pacheco"
+    ],
+    "arxiv_id": "2608.13484v1",
+    "paper_url": "http://arxiv.org/abs/2608.13484v1",
+    "published_date": "2026-08-13T17:13:41Z",
+    "huggingface_url": null,
+    "github_url": null
+  }
+]
